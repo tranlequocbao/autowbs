@@ -19,7 +19,7 @@ namespace AutoWBS
 {
     public partial class IMPORT_PAON : Form
     {
-        string conn = @"server = 10.40.13.238,1433; database = PCR_DB; User ID = mazda; Password = 123456; MultipleActiveResultSets = true";
+        string conn = @"server = 10.40.15.238,1433; database = PCR_DB; User ID = mazda; Password = 123456; MultipleActiveResultSets = true";
         public IMPORT_PAON()
         {
             InitializeComponent();
@@ -107,6 +107,8 @@ namespace AutoWBS
                 ClientHandles.SetValue(2, 2);
                 OPCItemIDs.SetValue("ch1.tesst.ss1.DATA_BMW", 3);
                 ClientHandles.SetValue(3, 3);
+                OPCItemIDs.SetValue("ch1.tesst.ss1.ID7", 4);
+                ClientHandles.SetValue(4, 4);
 
                 //OPCItemIDs.SetValue("Channel_1.Device_1.GET_STATUS", 1);
                 //ClientHandles.SetValue(1, 1);
@@ -141,6 +143,10 @@ namespace AutoWBS
                     if ((Convert.ToInt32(ClientHandles.GetValue(i)) == 3))
                     {
                         txt_BMW.Text = ItemValues.GetValue(i).ToString();
+                    }
+                    if ((Convert.ToInt32(ClientHandles.GetValue(i)) == 4))
+                    {
+                        txtSkidID7.Text = ItemValues.GetValue(i).ToString();
                     }
 
                 }
@@ -208,10 +214,7 @@ namespace AutoWBS
                                     {
                                         MessageBox.Show(ex.ToString());
                                     }
-                                    label1.Text = "";
-                                    Update_info("PASS", 1, 0);
-                                    Insert_info("PASS");
-                                    load_his();
+                             
                                 }
                                 else
                                 {
@@ -227,12 +230,13 @@ namespace AutoWBS
                                     {
                                         MessageBox.Show(ex.ToString());
                                     }
-                                    label1.Text = "";
-                                    Update_info("PASS", 1, 0);
-                                    Insert_info("PASS");
-                                    load_his();
+                                  
                                 }
-                                
+                                label1.Text = "";
+                                Update_info("PASS", 1, 0);
+                                Insert_info("PASS");
+                                load_his();
+
 
 
                             }
@@ -554,7 +558,7 @@ namespace AutoWBS
                 Thread.Sleep(TimeSpan.FromSeconds(2));
                 try
                 {
-                    Array ItemServerWriteValues = Array.CreateInstance(typeof(object), 3);
+                    Array ItemServerWriteValues = Array.CreateInstance(typeof(object), 10);
 
                     ItemServerWriteValues.SetValue("0", 2);
                     ConnectedGroup.SyncWrite(ItemCount, ref ItemServerHandles, ref ItemServerWriteValues, out ItemServerErrors);
@@ -566,6 +570,26 @@ namespace AutoWBS
                 }
             }
         }
+        private void txt_BMW_TextChanged(object sender, EventArgs e)
+        {
+            if (txt_BMW.Text == "True")
+            {
+                Thread.Sleep(TimeSpan.FromSeconds(2));
+                try
+                {
+                    Array ItemServerWriteValues = Array.CreateInstance(typeof(object), 10);
+
+                    ItemServerWriteValues.SetValue("0", 3);
+                    ConnectedGroup.SyncWrite(ItemCount, ref ItemServerHandles, ref ItemServerWriteValues, out ItemServerErrors);
+
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.ToString());
+                }
+            }
+        }
+
         private Boolean get_bmw(string vin_mini)
         {
             bool result = false;
@@ -588,7 +612,30 @@ namespace AutoWBS
             return result;
         }
         int i = 0;
-      
+
+        private void txtSkidID7_TextChanged(object sender, EventArgs e)
+        {
+            string s = string.Format("insert into [PCR_DB].[dbo].[PLC_WBS_PRB_007_HIS](NOTE,TIME) values('Số Skid vừa qua ID7: {0}','{1}')",txtSkidID7.Text,DateTime.Now.ToString("MM-dd-yyyy HH:mm:ss"));
+            using(SqlConnection myconn = new SqlConnection(conn))
+            {
+                try
+                {
+                    myconn.Open();
+                    SqlCommand cmd = new SqlCommand(s, myconn);
+                    cmd.ExecuteNonQuery();
+                }
+                catch(Exception ex)
+                {
+                    
+                }
+                finally
+                {
+                    myconn.Close();
+                }
+
+            }
+        }
+
         private void label1_TextChanged(object sender, EventArgs e)
         {
             if (i == 8)

@@ -37,3 +37,16 @@ E:\duan\AutoWBS\AutoWBS\obj\Debug\AutoWBS.csproj.GenerateResource.cache
 E:\duan\AutoWBS\AutoWBS\obj\Debug\AutoWBS.csproj.CoreCompileInputs.cache
 E:\duan\AutoWBS\AutoWBS\obj\Debug\AutoWBS.exe
 E:\duan\AutoWBS\AutoWBS\obj\Debug\AutoWBS.pdb
+D:\duan\autowbs\AutoWBS\bin\Debug\AutoWBS.exe.config
+D:\duan\autowbs\AutoWBS\bin\Debug\AutoWBS.exe
+D:\duan\autowbs\AutoWBS\bin\Debug\AutoWBS.pdb
+D:\duan\autowbs\AutoWBS\obj\Debug\AutoWBS.CLIENTS.resources
+D:\duan\autowbs\AutoWBS\obj\Debug\AutoWBS.Form1.resources
+D:\duan\autowbs\AutoWBS\obj\Debug\AutoWBS.IMPORT_PAON.resources
+D:\duan\autowbs\AutoWBS\obj\Debug\AutoWBS.IN_WBS.resources
+D:\duan\autowbs\AutoWBS\obj\Debug\AutoWBS.Properties.Resources.resources
+D:\duan\autowbs\AutoWBS\obj\Debug\AutoWBS.csproj.GenerateResource.cache
+D:\duan\autowbs\AutoWBS\obj\Debug\AutoWBS.csproj.CoreCompileInputs.cache
+D:\duan\autowbs\AutoWBS\obj\Debug\AutoWBS.exe
+D:\duan\autowbs\AutoWBS\obj\Debug\AutoWBS.pdb
+D:\duan\autowbs\AutoWBS\obj\Debug\AutoWBS.csproj.AssemblyReference.cache

@@ -52,7 +52,7 @@ namespace AutoWBS
         }
 
         string conn = @"server = 192.168.1.10,1433; database = PCR_DB; User ID = mazda; Password = 123456; MultipleActiveResultSets = true";
-        //string conn = @"server = 10.40.13.238,1433; database = PCR_DB; User ID = mazda; Password = 123456; MultipleActiveResultSets = true";
+       // string conn = @"server = 10.40.13.238,1433; database = PCR_DB; User ID = mazda; Password = 123456; MultipleActiveResultSets = true";
         private void bt_pass_Click(object sender, EventArgs e)
         {
             using (SqlConnection myconn = new SqlConnection(conn))
